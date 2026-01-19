@@ -25,6 +25,11 @@ data "aws_ami" "ubuntu" {
 resource "aws_security_group" "my_security_group" {
   name_prefix = "example-sg-"
 
+  user_data = <<-EOF
+              #!/bin/bash
+              export API_KEY="AKIAIOSFODNN7EXAMPLE"
+              EOF
+
   ingress {
     from_port   = 22
     to_port     = 22
